@@ -1,0 +1,25 @@
+.navbarContainer {
+    width: 100%;
+    margin: 20px 0;
+    background-color: rgba(38, 30, 30, 0.555);
+    border-radius: 25px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+li {
+    list-style: none;
+}
+
+.text {
+    text-decoration: none;
+    color: rgba(28, 21, 21, 0.74);
+}
+
+.text:hover {
+    color: aliceblue;
+}

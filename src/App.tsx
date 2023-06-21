@@ -1,39 +1,63 @@
-import { useContext } from "react";
-import { CreateProduct } from "./components/CreateProduct";
-import { ErrorComponent } from "./components/Error";
-import { Modal } from "./components/Modal";
-import Product from "./components/Products";
-import { ModalContext } from "./context/ModalContext";
-import { ApiRequestProducts } from "./hooks/api";
-import { IProduct } from "./models";
+import { FC, useEffect, useState } from "react"
+import { BrowserRouter } from "react-router-dom"
+import NavBar from "./Component/NavBar"
+import s from './App.module.css'
+import RouterComponent from "./Component/RouterComponent"
+import { AuthContext } from "./Context"
 
 
-function App() {
+export interface itemType {
+  userId?: any
+  id: any,
+  title: string,
+}
 
-  const {products, error, loader, setProduct} = ApiRequestProducts();
-  const {modal, open, close} = useContext(ModalContext);
+export interface optionsType {
+  value: string
+  name: string
+}
 
-  const updateData = (newData: IProduct) => {
-    close();
-    setProduct(newData);
+export interface searchType {
+  selectedSort: string
+  searchValue: string
+}
+
+export interface pagination {
+  page: any
+  limit: number
+  commonPages: number
+}
+
+export interface authLogin {
+  isLogin : boolean
+  setIsLogin : any
+}
+
+const App: FC = () => {
+
+ useEffect(() => {
+  if(localStorage.getItem('auth')) {
+    setIsLogin(true)
   }
+ }, [])
+
+ const [isLogin, setIsLogin] = useState(false);
 
 
   return (
-    <>
-    <div className="container max-w-7xl mx-auto ">
-      {error && <ErrorComponent error={error} />}
-      {loader && <p>Loadin...</p>}
-      {products.map(product => <Product products={product} key={product.id} />)}
+    <div className={s.container}>
+      <AuthContext.Provider value={{
+        isLogin,
+        setIsLogin,
+      }} >
+      <BrowserRouter >
+        <NavBar />
+        <RouterComponent />
+      </BrowserRouter>
+      </AuthContext.Provider>
     </div>
-
-    {modal && <Modal title="Create new modal" onClose={() => close()}>
-      <CreateProduct onChange={updateData} />
-    </Modal>}
-    <button onClick={() => open()} className="fixed right-10 bottom-8 bg-orange-800 rounded-xl px-2 py-2 text-white">+</button>
-    </>
   )
-};
+}
 
 
 

@@ -1,0 +1,14 @@
+.myInput {
+    width: 800px;
+    margin: 20px 0;
+    padding: 10px 5px;
+    border-radius: 15px;
+    border-color: aquamarine;
+}
+
+.myInput:focus {
+    outline: none;
+    border-color: rgb(190, 142, 63);
+    box-shadow: 4px 3px 5px rgb(190, 142, 63);
+}
+

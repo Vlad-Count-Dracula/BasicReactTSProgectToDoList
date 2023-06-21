@@ -1,0 +1,41 @@
+.container {  
+    width: 800px;
+    padding: 20px 0;
+    margin: 20px 0px;
+    background-color: rgba(61, 124, 104, 0.735);
+    display: flex;
+    justify-content: space-around;
+    border: solid;
+    border-color: antiquewhite;
+    border-radius: 20px;
+}
+
+.info {
+    display: flex;
+    width: 400px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.id {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.title {
+    display: block;
+    width: 400px;
+}
+
+.description {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    width: 200px;   
+}
